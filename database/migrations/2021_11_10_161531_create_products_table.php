@@ -1,0 +1,58 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateProductsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('type')->nullable();
+            $table->string('slug')->unique();
+            $table->longText('description')->nullable();
+            $table->string('reference')->unique();
+            $table->integer('stock')->default(0);
+            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('cat_id');
+            $table->unsignedBigInteger('child_cat_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('fournisseur_id');
+            $table->string('photo')->nullable();
+            $table->float('buying_price')->default(0);
+            $table->float('price')->default(0);
+            $table->float('offer_price')->default(0);
+            $table->float('discount')->default(0);
+            $table->enum('size',['S','M','L','XL'])->default('S');
+            $table->enum('conditions',['vendre','vedette'])->default('vendre');
+            $table->enum('status',['active','inactive'])->default('active');
+            $table->string('added_by')->nullable();
+   
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('CASCADE');
+            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('CASCADE');
+            $table->foreign('child_cat_id')->references('id')->on('categories')->onDelete('SET NULL');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('products');
+    }
+}
