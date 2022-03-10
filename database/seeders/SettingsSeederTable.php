@@ -19,7 +19,7 @@ class SettingsSeederTable extends Seeder
             'title'=>'Comptoire Commercial Serigne Saliou',
             'meta_description'=>'Gestion Commercial',
             'meta_keywords'=>'Gestion Commercial en Ligne',
-            'logo'=>'/backend/assets/images/ccss.jpeg',
+            'logo'=>'cc2s',
             'favicon'=>'/backend/assets/images/ccss.jpeg',
             'email'=>'ccss@gmail.com',
             'phone'=>'775485775',

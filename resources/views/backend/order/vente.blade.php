@@ -89,7 +89,7 @@
                                 </div>
                             </div>       
                     </div>
-                    <button id="valider" class="mr-5 valider btn btn-warning text-right" style="float: right; position: relative;">Valider</button> 
+                    <a  id="valider" class="mr-5 valider btn btn-warning text-right" style="float: right; position: relative;">Valider</a> 
                 </div>
             </div>
             <hr>
@@ -110,12 +110,12 @@
                         </div>
                     </div>
                     <div class="col-12" style="float: right; position: relative;">
-                        <button disabled id="add_to_facture" data-price="0" data-quantity="1" data-product-id=""
-                            class="mr-5 ml-2 btn btn-success float-right add_to_facture">
+                        <a disabled id="add_to_facture" data-price="0" data-quantity="1" data-product-id=""
+                            class="mr-5 disabled ml-2 btn btn-success float-right add_to_facture">
                             <i class="fa fa-cart-plus">  Enregistrer</i>
-                        </button>
-                        <button disabled  onclick="window.location='{{ route('facture.delete')}}'" type="button"  id="_supprimer" class="ml-2 btn btn-danger float-right"><i class="icon-trash">  Supprimer</i></button>
-                        <button disabled  id="_nouveau" class="ml-2 btn btn-info float-right _nouveau"><i class="fa fa-plus">  Nouveau</i></button>
+                        </a>
+                        <a   href="{{ route('facture.delete')}}" type="button"  id="_supprimer" class="ml-2 disabled btn btn-danger float-right"><i class="icon-trash">  Supprimer</i></a>
+                        <a  id="_nouveau" class="ml-2 disabled btn btn-info float-right _nouveau"><i class="fa fa-plus">  Nouveau</i></a>
                     </div>
                 </div>
             <hr>
@@ -154,7 +154,7 @@
             document.getElementById('_statut').readOnly = true;
             document.getElementById('_dateLiv').readOnly = true;
             document.getElementById('_ref').readOnly = true;
-            $("#valider").attr("disabled", "disabled"); 
+            $("#valider").addClass("disabled"); 
 
             $('#product_id').selectize()[0].selectize.enable();
             document.getElementById('product_id').disabled = false;
@@ -162,7 +162,7 @@
             document.getElementById('price').readOnly = false;
             document.getElementById('qty').readOnly = false;
             document.getElementById('_remise').readOnly = true;
-            $("#_nouveau").attr("disabled", false);
+            $("#_nouveau").removeClass("disabled");
         }
     </script>
 
@@ -212,8 +212,8 @@
                     }
                 });
                 
-                $(".add_to_facture").attr("disabled", false); 
-                $("#_supprimer").attr("disabled", false); 
+                $(".add_to_facture").removeClass("disabled"); 
+                $("#_supprimer").removeClass("disabled"); 
             }
             
         });

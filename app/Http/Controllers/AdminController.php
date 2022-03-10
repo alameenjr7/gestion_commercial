@@ -24,20 +24,7 @@ class AdminController extends Controller
         // List Orders
         $orders=Order::orderBy('id','DESC')->limit('5')->get();
 
-        // New order groupe product and user
-        $new_orders = DB::select(DB::raw("
-            select
-                product_id,
-                count(users.id) as users_id,
-                SUM(total_amount) as total,
-                count(product_id) as count_product
-            from product_orders
-                join orders on (product_orders.order_id = orders.id)
-                join users on (orders.user_id = users.id)
-                where `payment_status`='paid'
-                group by product_id
-                limit 4
-        "));
+        
 
         // dd($new_orders);
         // SELECT user_id, SUM(total_amount) FROM orders GROUP BY user_id HAVING SUM(total_amount) > 40
@@ -49,38 +36,38 @@ class AdminController extends Controller
 
         // Sales Report Annual
         $order_sales = Order::select(
-            DB::raw('year(created_at) as year'),
+            DB::raw('year(date) as year'),
             DB::raw('sum(total_amount) as total'),
         )
-        ->where(DB::raw('date(created_at)'),'>=',Carbon::now()->subYear())
-        ->where('condition','delivered')->whereYear('created_at', date('Y', strtotime('0 year')))
+        ->where(DB::raw('date(date)'),'>=',Carbon::now()->subYear())
+        ->where('condition','delivered')->whereYear('date', date('Y', strtotime('0 year')))
         ->groupBy('year')->get();
         $data= "";
         foreach($order_sales as $val){
             $data.=$val->total;
         }
-        $chartData1 = $data;
+        $chartData1 = (float) $data;
 
         // Annual Revenue
         $annuals_revenues = Order::sum('total_amount');
 
         // Income Analysis
-        $sales_monthly = DB::select(DB::raw("SELECT SUM(total_amount) AS total FROM orders WHERE `condition`='delivered' AND DATE(created_at) BETWEEN CURRENT_DATE - INTERVAL 5 DAY AND CURRENT_DATE GROUP BY DATE(created_at) ORDER BY DATE(created_at)"));
+        $sales_monthly = DB::select(DB::raw("SELECT SUM(total_amount) AS total FROM orders WHERE `condition`='delivered' AND DATE(created_at) BETWEEN CURRENT_DATE - INTERVAL 5 DAY AND CURRENT_DATE GROUP BY DATE(date) ORDER BY DATE(date)"));
         $data= "";
         foreach($sales_monthly as $val){
             $data.="$val->total,";
         }
-        $chartData = $data;
+        $chartData = (float) $data;
 
         //Annual Sales Graphics
-        $sales_annuals=Order::select(DB::raw("YEAR(created_at) year"),DB::raw("SUM(total_amount) as sales"))->where('condition','delivered')->where('payment_status','paid')->groupBy('year')->get()->toArray();
+        $sales_annuals = Order::select(DB::raw("YEAR(created_at) year"),DB::raw("SUM(total_amount) as sales"))->where('condition','delivered')->where('payment_status','paid')->groupBy('year')->get()->toArray();
         // dd($sales_annuals);
-        $json = json_encode($sales_annuals );
+        $json = json_encode($sales_annuals);
 
         //Annual Sales Graphics
-        $rev_annuals=Product::select(DB::raw("YEAR(created_at) year"),DB::raw("SUM(offer_price) as revenue"))->where('status','active')->groupBy('year')->get()->toArray();
+        $rev_annuals = Product::select(DB::raw("YEAR(created_at) year"),DB::raw("SUM(offer_price) as revenue"))->where('status','active')->groupBy('year')->get()->toArray();
         // dd($rev_annuals);
-        $json1 = json_encode($rev_annuals );
+        $json1 = json_encode($rev_annuals);
 
         //Precedent month
         $sales_precedent_monthly = DB::select(DB::raw("SELECT MONTH(`created_at`) AS month, SUM(total_amount) AS total FROM orders WHERE `condition`='delivered' AND YEAR(`created_at`) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(`created_at`) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH) GROUP BY MONTH(created_at) ORDER BY MONTH(created_at)"));
@@ -88,74 +75,101 @@ class AdminController extends Controller
         foreach($sales_precedent_monthly as $val){
             $data.="$val->total,";
         }
-        $chartData2 = $data;
+        $chartData2 = (float) $data;
 
         //Actual month
-        $sales_actual_monthly = DB::select(DB::raw("SELECT MONTH(`created_at`) AS month, SUM(total_amount) AS total FROM orders WHERE `condition`='delivered' AND YEAR(`created_at`) = YEAR(CURRENT_DATE - INTERVAL 0 MONTH) AND MONTH(`created_at`) = MONTH(CURRENT_DATE - INTERVAL 0 MONTH) GROUP BY MONTH(created_at) ORDER BY MONTH(created_at)"));
+        $sales_actual_monthly = DB::select(DB::raw("SELECT MONTH(`date`) AS month, SUM(total_amount) AS total FROM orders WHERE `condition`='delivered' AND YEAR(`date`) = YEAR(CURRENT_DATE - INTERVAL 0 MONTH) AND MONTH(`date`) = MONTH(CURRENT_DATE - INTERVAL 0 MONTH) GROUP BY MONTH(date) ORDER BY MONTH(date)"));
         $data= "";
         foreach($sales_actual_monthly as $val){
             $data.="$val->total,";
         }
-        $chartData3 = $data;
+        
+        $chartData3 = (float) $data;
 
+    
+
+        
         //different percent 2 last month
-        // $percent_monthPre= "";
-        // if($percent_monthPre != 0)
-        //     $percent_monthPre = number_format((float) str_replace(',','',$chartData2)/(float) str_replace(',','',$chartData1) * 100,2);
-        // else
-        //     $percent_monthPre = 0;
+        $percent_monthPre = null;
+        if($percent_monthPre != 0){
+            $percent_monthPre = ($chartData2/($chartData1)) * 100;
+        }
+        else{
+            $percent_monthPre = 0;
+
+        }
+      
+
+        $percent_monthAc= null;
+        if($percent_monthAc != 0)
+            $percent_monthAc = ($chartData3/$chartData1) * 100;
+        else
+            $percent_monthAc = 0;
+       
+
+        $diff_percent= null;
+        if($diff_percent != 0)
+            $diff_percent = $percent_monthAc-$percent_monthPre;
+        else
+            $diff_percent = 0;
+
+        // dd($diff_percent);
 
 
-        // $percent_monthAc= "";
-        // if($percent_monthAc != 0)
-        //     $percent_monthAc = number_format((float) str_replace(',','',$chartData3)/(float) str_replace(',','',$chartData1) * 100,2);
-        // else
-        //     $percent_monthAc = 0;
-
-
-        // $diff_percent= "";
-        // if($diff_percent != 0)
-        //     $diff_percent = $percent_monthAc-$percent_monthPre;
-        // else
-        //     $diff_percent = 0;
 
         // Sales Income Overall
         $salesIncomeOverall  = Order::select(DB::raw('SUM(total_amount) as total'),)->where('condition','delivered')->get();
-        $data= "";
+        $data= null;
         foreach($salesIncomeOverall as $val){
             $data.=$val->total;
         }
-        $chartData4 = $data;
+        $chartData4 = (float) $data;
+
+        $global_week = Order::select(DB::raw('total_amount as total'))->where('condition','delivered')->where('date','>',now()->subDays(7)->endOfDay())->orderBy('date')->get();
 
         //count total product
         $total_productMonth = Product::where('status','active')->where('created_at','>',now()->subDays(30)->endOfDay())->count();
-        $total_product=Product::where('status','active')->count();
-
-
+        $total_product = Product::where('status','active')->count();
+        
+        $progressTA= null;
+        if($progressTA != 0)
+            $progressTA =  ($total_productMonth/$total_product)*100;
+        else
+            $progressTA = 0;
+        
         //Last customers
         $lastCustomer=Client::where('statut','activer')->where('created_at','>',now()->subDays(30)->endOfDay())->count();
         $totalCustomer=Client::where('statut','activer')->count();
-
+        $progressCustomer= null;
+        if($progressCustomer != 0)
+            $progressCustomer = ($lastCustomer/$totalCustomer)*100;
+        else
+            $progressCustomer = 0;
+// dd($progressCustomer);
         $order_total_week = Order::where('condition','delivered')->where('created_at','>',now()->subDays(7)->endOfDay())->sum('total_amount');
-
+        
+        $total_buying = DB::select(DB::raw('SELECT sum(price * stock) as somme FROM products WHERE status="active"'));
+      
         return view('backend.index',compact(
-            // 'user',
+            'progressTA',
+            'progressCustomer',
             'order_total_week',
             'orders',
-            'new_orders',
+            'total_buying',
             'annuals_revenues',
             'chartData1',
             'json',
             'chartData',
             'chartData2',
             'chartData3',
-            // 'diff_percent',
+            'diff_percent',
             'chartData4',
             'total_productMonth',
             'total_product',
             'lastCustomer',
             'totalCustomer',
-            'json1'
+            'json1',
+            //'global_week'
         ));
     }
 }

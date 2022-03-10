@@ -46,7 +46,7 @@
                         <span>Total Articles</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-yellow m-b-0">
-                        <div class="progress-bar" data-transitiongoal="{{$total_productMonth/$total_product*100}}"></div>
+                        <div class="progress-bar" data-transitiongoal="{{$progressTA}}"></div>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <span>Nouveaux Clients</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-purple m-b-0">
-                        <div class="progress-bar" data-transitiongoal="{{$lastCustomer/$totalCustomer*100}}"></div>
+                        <div class="progress-bar" data-transitiongoal="{{$progressCustomer}}"></div>
                     </div>
                 </div>
             </div>
@@ -108,15 +108,15 @@
                         <div class="clearfix row">
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Rapport des Ventes</span>
-                                <h3 class="text-warning">{{(float) str_replace(',','',$chartData1)}}</h3>
+                                <h3 class="text-warning">{{(float) str_replace(',','',$chartData1)}} <strong>F</strong></h3>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Revenu Annuel </span>
-                                <h3 class="text-info">{{(float) str_replace(',','',$annuals_revenues)}}</h3>
+                                <h3 class="text-info">{{$total_buying[0]->somme}} <strong>F</strong></h3>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Bénéfice Total</span>
-                                <h3 class="text-success">{{$annuals_revenues - (float) str_replace(',','',$chartData1)}}</h3>
+                                <h3 class="text-success">{{$annuals_revenues - (float) str_replace(',','',$chartData1)}} <strong>F</strong></h3>
                             </div>
                         </div>
                         <div id="area_chart" class="graph"></div>
@@ -141,7 +141,7 @@
                         <div class="sparkline" data-type="line" data-spot-Radius="2" data-highlight-Spot-Color="#445771" data-highlight-Line-Color="#222"
                             data-min-Spot-Color="#445771" data-max-Spot-Color="#445771" data-spot-Color="#445771"
                             data-offset="90" data-width="100%" data-height="95px" data-line-Width="1" data-line-Color="#ffcd55"
-                            data-fill-Color="#ffcd55">22,40,3,1,5,7,3,37
+                            data-fill-Color="#ffcd55">33,20,30,50,12,05,00
                         </div>
                     </div>
                 </div>
@@ -252,52 +252,8 @@
         </div>
 
         <div class="clearfix row">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>Nouvelles Commandes</h2>
-                    </div>
-                    <div class="body">
-                        <table class="table table-hover">
-                            <thead class="thead-success">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Article</th>
-                                    {{-- <th>Customers</th> --}}
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (count($new_orders)>0)
-                                @forelse ($new_orders as $key=>$new)
-                                    <tr>
-                                        <td>{{$new->count_product}}</td>
-                                        <td>
-                                            @php
-                                                $title_product=\App\Models\Product::where('id',$new->product_id)->first();
-                                            @endphp
-                                            {{$title_product->title}}
-                                        </td>
-                                        {{-- <td>
-                                            @php
-                                                $photo_user=\App\Models\User::where('id',$new->users_id)->first();
-                                            @endphp
-                                            <ul class="list-unstyled team-info margin-0">
-                                                <li><img src="{{asset($photo_user->photo)}}" title="Avatar" alt=""></li>
-                                            </ul>
-                                        </td> --}}
-                                        <td>{{$new->total}}</td>
-                                    </tr>
-                                @empty
-                                    <td colspan="4" class="text-center">Pas de Commande</td>
-                                @endforelse
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
+            
+            <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="header">
                         <h2>Pays le plus vendu</h2>
