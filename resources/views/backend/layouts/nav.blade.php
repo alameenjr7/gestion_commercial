@@ -6,7 +6,7 @@
 
         <div class="navbar-brand">
             <a href="{{route('admin')}}">
-                <img src="{{asset(get_setting('logo'))}}" alt="CCSS Logo" class="img-responsive logo">
+                <img src="{{asset(get_setting('logo'))}}" alt="CCSS Logo" class="img-responsive logo" width="40ox" height="40px">
             </a>    
         </div>
 

@@ -42,28 +42,28 @@
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>Reference</th>
-                                            <th>Titre</th>
-                                            <th>Photo</th>
-                                            <th>Prix</th>
+                                            <th>Référence</th>
+                                            <th>Désignation</th>
+                                            {{-- <th>Photo</th> --}}
+                                            <th>Prix de vente</th>
                                             <th>Prix d'achat</th>
                                             <th>Famille</th>
                                             <th>Stock Magazin</th>
-                                            <th>Stock Depot</th>
+                                            {{-- <th>Stock Depot</th> --}}
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Reference</th>
-                                            <th>Titre</th>
-                                            <th>Photo</th>
-                                            <th>Prix</th>
+                                            <th>Référence</th>
+                                            <th>Désignation</th>
+                                            {{-- <th>Photo</th> --}}
+                                            <th>Prix de vente</th>
                                             <th>Prix d'achat</th>
                                             <th>Famille</th>
                                             <th>Stock Magazin</th>
-                                            <th>Stock Depot</th>
+                                            {{-- <th>Stock Depot</th> --}}
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -77,9 +77,9 @@
                                             <th hidden>{{$loop->iteration}}</th>
                                             <td>{{$item->reference}}</td>
                                             <td>{{$item->title}}</td>
-                                            <td style="text-align: center">
+                                            {{-- <td style="text-align: center">
                                                 <img src="{{$photo[0] ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="client img" style="height: 60px; width: 60px;">
-                                            </td>
+                                            </td> --}}
                                             <td>{{Helper::currency_converter($item->price)}}</td>
                                             <td>{{Helper::currency_converter($item->buying_price)}}</td>
                                             <td style="text-align: center">{{\App\Models\Category::where('id',$item->cat_id)->value('reference')}}</td>
@@ -102,7 +102,7 @@
                                                 $stock_dep = App\Models\Depot::where('reference',$item->reference)->get()->first();
                                                 // dd($stock_dep);
                                             @endphp
-                                            <td style="text-align: center">
+                                            {{-- <td style="text-align: center">
                                                 @if ($stock_dep)
                                                     @if ($stock_dep->stock > 75)
                                                         <span class="badge badge-success">
@@ -122,7 +122,7 @@
                                                     0
                                                 </span>
                                                 @endif
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 <input type="checkbox" name="toogle" value="{{$item->id}}"
                                                     data-toggle="switchbutton" {{$item->status=='active' ? 'checked' :

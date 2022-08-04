@@ -36,9 +36,9 @@
                                         <div class="info">
                                             <h6>{{App\Models\Setting::value('title')}}</h6>
                                             <p> 
-                                                {{App\Models\Setting::value('email')}} <br>
-                                                +(221){{App\Models\Setting::value('phone')}}/+(221){{App\Models\Setting::value('fax')}}  <br>
-                                                {{App\Models\Setting::value('address')}} 
+                                                Email: {{App\Models\Setting::value('email')}} <br>
+                                                Tel: (+221) {{App\Models\Setting::value('phone')}} / {{App\Models\Setting::value('fax')}}  <br>
+                                                Adresse: {{App\Models\Setting::value('address')}} 
                                             </p>
                                         </div>
                                         <div class="title">
@@ -66,7 +66,7 @@
                                                 @if ($client)
                                                     {{$client->prenom}} {{$client->nom}}<br>
                                                     {{$client->adresse}} <br>
-                                                    +(221) {{ $client->telephone}}
+                                                    (+221) {{ $client->telephone}}
                                                 @else
                                                     {{$order->reference}}
                                                 @endif
@@ -81,7 +81,7 @@
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th>Ref.</th>
-                                                    <th>Designation</th>
+                                                    <th>Désignation</th>
                                                     <th>Quantite</th>
                                                     <th>Prix Unitaire</th>
                                                     <th style="width: 80px;">Total</th>
@@ -103,12 +103,12 @@
                                     <hr>
                                     <div class="row clearfix">
                                         <div class="col-md-6">
-                                            <h5>Important !!!</h5>
-                                            <p>Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.</p>
+                                            <h5>Nous apprécions votre clientèle.</h5>
+                                            <p>Si vous avez des questions sur ce facture, n'hésitez pas à nous contacter.</p>
                                         </div>
                                         
                                         <div class="col-md-6 text-right">
-                                            <p class="m-b-0"><b>Sub-total:</b> {{$order->sub_total}} FCFA</p>
+                                            <p class="m-b-0"><b>Sous-total:</b> {{$order->sub_total}} FCFA</p>
                                             @if ($order->coupon>0)
                                                 <p class="m-b-0">Coupon: {{$order->coupon}} FCFA</p>
                                             @endif
@@ -124,7 +124,7 @@
                                                             
                             <div class="hidden-print col-md-12 text-right">
                                 <hr>
-                                <a class="btn btn-round btn-primary buttons-print" tabindex="0" aria-controls="DataTables_Table_0" href="#"><span>Print</span></a>
+                                <a class="btn btn-round btn-primary buttons-print" tabindex="0" aria-controls="DataTables_Table_0" href="#"><span>Imprimer</span></a>
                                 {{-- <button onclick="printDiv();"  id="printInvoice" class="btn btn-outline-success printInvoice"><i class="icon-printer"></i></button> --}}
                                 <a class="btn btn-primary" href="{{route('admin')}}">Accueil</a>
                             </div>

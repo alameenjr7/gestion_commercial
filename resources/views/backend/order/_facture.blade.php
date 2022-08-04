@@ -10,7 +10,7 @@
                             <th>Designation</th>
                             <th>Prix Unitaire</th>
                             <th>Quantite</th>
-                            <th>Remise</th>
+                            {{-- <th>Remise</th> --}}
                             <th style="width: 80px;">Total</th>
                         </tr>
                     </thead>
@@ -27,9 +27,9 @@
                                 <td>
                                     {{$item->qty}}
                                 </td>
-                                <td>
+                                {{-- <td>
                                     {{$item->model->discount}} %
-                                </td>
+                                </td> --}}
                                 <td>
                                     {{$item->subtotal()}} FCFA
                                 </td>

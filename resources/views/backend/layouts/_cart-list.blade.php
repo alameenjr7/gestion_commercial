@@ -5,7 +5,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th>#</th>
-                    <th>Image</th>
+                    {{-- <th>Image</th> --}}
                     <th>Description</th>
                     <th>Prix Unitaire</th>
                     <th>Quantite</th>
@@ -18,9 +18,9 @@
                         <td>
                             <i class="icon-trash cart_delete" style="text-align: center;" data-id="{{$item->rowId}}"></i>
                         </td>
-                        <td style="text-align: center">
+                        {{-- <td style="text-align: center">
                             <img src="{{asset($item->model->photo)}}" alt="Article" style="height: 60px; width: 60px;">
-                        </td>
+                        </td> --}}
                         <td>
                             <a href="{{route('product.detail',$item->model->slug)}}">{{$item->name}}</a>
                         </td>

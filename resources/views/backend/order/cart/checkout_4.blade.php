@@ -32,11 +32,11 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Reference</th>
-                                        <th>Image</th>
+                                        {{-- <th>Image</th> --}}
                                         <th>Designation</th>
                                         <th>Prix Unitaire</th>
                                         <th>Quantite</th>
-                                        <th>Remise(%)</th>
+                                        {{-- <th>Remise(%)</th> --}}
                                         <th style="width: 80px;">Total</th>
                                     </tr>
                                 </thead>
@@ -46,9 +46,9 @@
                                             <td>
                                                 {{$item->model->reference}}
                                             </td>
-                                            <td style="text-align: center">
+                                            {{-- <td style="text-align: center">
                                                 <img src="{{asset($item->model->photo)}}" alt="Article" style="height: 60px; width: 60px;">
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 {{$item->name}}
                                             </td>
@@ -56,9 +56,9 @@
                                             <td>
                                                 {{$item->qty}}
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 {{$item->model->discount}} %
-                                            </td>
+                                            </td> --}}
                                             <td>{{$item->subtotal()}} FCFA</td>
                                         </tr>
                                     @endforeach

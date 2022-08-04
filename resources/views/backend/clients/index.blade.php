@@ -46,7 +46,7 @@
                                             <th>Reference</th>
                                             <th>Prenom</th>
                                             <th>NOM</th>
-                                            <th>Photo</th>
+                                            {{-- <th>Photo</th> --}}
                                             <th>Adresse</th>
                                             <th>Telephone</th>
                                             <th>Status</th>
@@ -58,7 +58,7 @@
                                             <th>Reference</th>
                                             <th>Prenom</th>
                                             <th>NOM</th>
-                                            <th>Photo</th>
+                                            {{-- <th>Photo</th> --}}
                                             <th>Adresse</th>
                                             <th>Telephone</th>
                                             <th>Status</th>
@@ -72,10 +72,10 @@
                                             <td>{{$item->reference}}</td>
                                             <td>{{$item->prenom}}</td>
                                             <td>{{$item->nom}}</td>
-                                            <td style="text-align: center">
+                                            {{-- <td style="text-align: center">
                                                 <img src="{{$item->photo ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="client img"
                                                 style="height: 60px; width: 60px;">
-                                            </td>
+                                            </td> --}}
                                             <td>{{$item->adresse}}</td>
                                             <td>{{$item->telephone}}</td>
                                             <td>

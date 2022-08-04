@@ -118,11 +118,11 @@
                                     <thead>
                                         <tr>
                                             <th>Reference</th>
-                                            <th>Image Article</th>
+                                            {{-- <th>Image Article</th> --}}
                                             <th>Designation</th>
                                             <th>Prix</th>
                                             <th>Quantite</th>
-                                            <th>Remise(%)</th>
+                                            {{-- <th>Remise(%)</th> --}}
                                             <th>Total</th>
                                         </tr>
                                     </thead>
@@ -130,13 +130,13 @@
                                         @forelse ($order->products as $item)
                                             <tr>
                                                 <td>{{ $item->reference }}</td>
-                                                <td>
+                                                {{-- <td>
                                                     <img src="{{ asset($item->photo) }}" style="width:60px; height:60px">
-                                                </td>
+                                                </td> --}}
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $item->price }} FCFA</td>
                                                 <td>{{ $item->pivot->quantity }}</td>
-                                                <td>{{ $item->discount }} %</td>
+                                                {{-- <td>{{ $item->discount }} %</td> --}}
                                                 <td>{{ $item->price * $item->pivot->quantity }} FCFA</td>
                                             </tr>
                                         @empty

@@ -101,16 +101,16 @@
                                     </tr>
                                 </tfoot>
                             </table>
-                            <div class="thanks">Thank you!</div>
+                            <div class="thanks">Merci!!</div>
                             <div class="notices">
-                                <div>NOTICE:</div>
-                                <div class="notice">A finance charge of 1.5% will be made on unpaid
-                                    balances after 30 days.</div>
+                                <div>REMARQUER:</div>
+                                <div class="notice">Des frais financiers de 1,5 % seront facturés sur les impayés
+                                    solde après 30 jours.</div>
                             </div>
                         </main>
                         <footer>
-                            Invoice was created on a computer and is valid without the signature and
-                            seal.
+                            La facture a été créée sur un ordinateur et est valable sans la signature et
+                            sceller.
                         </footer>
                     </div>
                     <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
@@ -118,7 +118,7 @@
                 </div>
             </div>
             @else
-                <h5 class="text-danger">Invalid</h5>
+                <h5 class="text-danger">Invalide</h5>
             @endif
         </body>
     </html>

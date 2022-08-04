@@ -113,15 +113,15 @@
                                 <li><a href="{{route('review.create')}}">Add Review</a></li>
                             </ul>
                         </li> --}}
-                        <li class="desactive">
+                        {{-- <li class="desactive">
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-check"></i> <span>Gestion Stock Depot</span></a>
                             <ul>
                                 <li><a href="{{route('depots.index')}}">Liste depots</a></li>
                                 <li><a href="{{route('depots.create')}}">Ajout dans le depot</a></li>
-                                {{-- <li><a href="{{route('coupon.index')}}">All Coupons</a></li>
-                                <li><a href="{{route('coupon.create')}}">Add Coupon</a></li> --}}
+                                <li><a href="{{route('coupon.index')}}">All Coupons</a></li>
+                                <li><a href="{{route('coupon.create')}}">Add Coupon</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="desactive">
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-users"></i> <span>Gestion des Vendeurs</span></a>
                             <ul>
