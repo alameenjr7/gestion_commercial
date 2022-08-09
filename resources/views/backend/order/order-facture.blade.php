@@ -37,7 +37,7 @@
                                             <h6>{{App\Models\Setting::value('title')}}</h6>
                                             <p> 
                                                 Email: {{App\Models\Setting::value('email')}} <br>
-                                                Tel: (+221) {{App\Models\Setting::value('phone')}} / {{App\Models\Setting::value('fax')}}  <br>
+                                                Tél: (+221) {{App\Models\Setting::value('phone')}}  {{App\Models\Setting::value('fax')}}  <br>
                                                 Adresse: {{App\Models\Setting::value('address')}} 
                                             </p>
                                         </div>
