@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\client;
+use App\Models\Client;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -59,7 +59,6 @@ class ClientController extends Controller
             'note'=>'string|nullable',
             'adresse'=>'string|nullable',
             'telephone'=>'string|nullable',
-            'photo'=>'nullable',
             'statut'=>'nullable|in:activer,desactiver',
         ]);
         
@@ -123,7 +122,6 @@ class ClientController extends Controller
                 'note'=>'string|nullable',
                 'adresse'=>'string|nullable',
                 'telephone'=>'string|nullable',
-                'photo'=>'nullable',
                 'statut'=>'nullable|in:activer,desactiver',
             ]);
 

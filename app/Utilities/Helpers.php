@@ -122,7 +122,7 @@ function generateRefCategorie()
         $referal_code = random_int(10000, 99999);
     } while (Category::where("reference", $referal_code)->first());
 
-    $reference = '-'.$referal_code . '-CT';
+    $reference = 'CAT-'.$referal_code;
     return $reference;
 }
 

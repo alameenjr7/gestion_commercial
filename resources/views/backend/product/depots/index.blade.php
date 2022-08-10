@@ -70,7 +70,7 @@
                                         <tr>
                                             <th hidden>{{$loop->iteration}}</th>
                                             <td>{{$item->reference}}</td>
-                                            <td>{{$item->nom}}</td>
+                                            <td>{{ucfirst($item->nom)}}</td>
                                             <td style="text-align: center">
                                                 <img src="{{$photo[0] ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="client img" style="height: 60px; width: 60px;">
                                             </td>

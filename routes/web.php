@@ -24,7 +24,7 @@ require __DIR__ . '/seller.php';
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:admin,seller']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 

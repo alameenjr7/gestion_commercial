@@ -53,7 +53,6 @@ class BrandController extends Controller
     {
         $this->validate($request, [
             'title'=>'nullable|string',
-            'photo'=>'required',
             'status'=>'nullable|in:active,inactive',
         ]);
         $data=$request->all();
@@ -115,7 +114,6 @@ class BrandController extends Controller
         if($brand){
             $this->validate($request, [
                 'title'=>'nullable|string',
-                'photo'=>'required',
                 'status'=>'nullable|in:active,inactive',
             ]);
             $data=$request->all();
