@@ -121,6 +121,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            
                                             @empty
                                             <td colspan="9" class="text-center">Pas de factures</td>
                                             @endforelse

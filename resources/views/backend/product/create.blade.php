@@ -57,14 +57,7 @@
                                 </div>
 
                                 <div class="row col-lg-12 col-md-12 col-sm-12">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Type de Produit <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" placeholder="eg: Numerique" name="type"
-                                                value="{{old('type')}}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Fournisseurs <span class="text-danger">*</span></label>
                                             <select name="fournisseur_id" class="form-control show-tick" required>
@@ -101,13 +94,6 @@
                                             <label for="">Stock <span class="text-danger">*</span></label>
                                             <input type="number" class="form-control" placeholder="eg: 200" name="stock"
                                                 value="{{old('stock')}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Remise <span class="text-danger">*</span></label>
-                                            <input type="number" min="0" max="100" step="any" class="form-control" placeholder="eg: 20%" name="discount"
-                                                value="{{old('discount')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +134,7 @@
                                 </div>
 
                                 <div class="mt-3 row col-lg-12 col-md-12 col-sm-12">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="">Marques </label>
                                         <select name="brand_id" class="form-control show-tick">
                                             <option value="">-- Choisir une Marque --</option>
@@ -157,16 +143,16 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="">Tailles </label>
-                                        <select name="size" class="form-control show-tick">
-                                            <option value="">-- Choisir une Taille --</option>
-                                            <option value="S" {{old('size')=='S' ? 'selected' : '' }}>Small</option>
-                                            <option value="M" {{old('size')=='M' ? 'selected' : '' }}>Medium</option>
-                                            <option value="L" {{old('size')=='L' ? 'selected' : '' }}>Large</option>
-                                            <option value="XL" {{old('size')=='XL' ? 'selected' : '' }}>Extra Large</option>
-                                        </select>
-                                    </div>
+                                    <!--<div class="col-md-6">-->
+                                    <!--    <label for="">Tailles </label>-->
+                                    <!--    <select name="size" class="form-control show-tick">-->
+                                    <!--        <option value="">-- Choisir une Taille --</option>-->
+                                    <!--        <option value="S" {{old('size')=='S' ? 'selected' : '' }}>Small</option>-->
+                                    <!--        <option value="M" {{old('size')=='M' ? 'selected' : '' }}>Medium</option>-->
+                                    <!--        <option value="L" {{old('size')=='L' ? 'selected' : '' }}>Large</option>-->
+                                    <!--        <option value="XL" {{old('size')=='XL' ? 'selected' : '' }}>Extra Large</option>-->
+                                    <!--    </select>-->
+                                    <!--</div>-->
                                 </div>
 
 
@@ -202,13 +188,13 @@
 
                                 
 
-                                <div class="col-lg-12 col-md-12 mt-3">
-                                    <div class="form-group">
-                                        <label for="">Description </label>
-                                        <textarea id="description" class="form-control" placeholder="Write some text..."
-                                            name="description">{{old('description')}}</textarea>
-                                    </div>
-                                </div>
+                                <!--<div class="col-lg-12 col-md-12 mt-3">-->
+                                <!--    <div class="form-group">-->
+                                <!--        <label for="">Description </label>-->
+                                <!--        <textarea id="description" class="form-control" placeholder="Write some text..."-->
+                                <!--            name="description">{{old('description')}}</textarea>-->
+                                <!--    </div>-->
+                                <!--</div>-->
                             </div>
 
                             <div class="mt-3">

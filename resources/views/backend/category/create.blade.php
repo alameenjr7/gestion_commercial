@@ -50,7 +50,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Reference <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" maxlength="4" placeholder="HP" name="reference"
+                                            <input type="text" class="form-control" readonly maxlength="4" placeholder="CAT" name="reference"
                                                 value="{{old('reference')}}">
                                         </div> 
                                     </div>

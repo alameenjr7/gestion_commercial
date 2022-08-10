@@ -18,8 +18,8 @@ class CreateSettingsTable extends Migration
             $table->string('title');
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();
-            $table->string('logo');
-            $table->string('favicon');
+            $table->string('logo')->nullable();
+            $table->string('favicon')->nullable();
             $table->string('email');
             $table->string('phone');
             $table->string('fax');

@@ -71,7 +71,6 @@ class SellerController extends Controller
             'city'=>'string|nullable',
             'state'=>'string|nullable',
             'country'=>'string|nullable',
-            'photo'=>'required',
             'status'=>'required|in:active,inactive',
         ]);
 
@@ -140,7 +139,6 @@ class SellerController extends Controller
                 'email'=>'email|required|exists:sellers,email',
                 'phone'=>'string|nullable',
                 'address'=>'string|nullable',
-                'photo'=>'required',
                 'date_of_birth'=>'string|nullable',
                 'genre'=>'string|nullable',
                 'city'=>'string|nullable',

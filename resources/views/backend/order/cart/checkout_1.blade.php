@@ -17,6 +17,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- Color Pickers -->
         <div class="clearfix row">

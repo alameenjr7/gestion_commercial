@@ -53,16 +53,13 @@ class ProductController extends Controller
         $this->validate($request,[
             'title'=>'string|required',
             'reference'=>'string|required',
-            'type'=>'string|nullable',
-            'description'=>'string|nullable',
+            // 'description'=>'string|nullable',
             'buying_price'=>'required|numeric',
             'stock'=>'required|numeric',
             'price'=>'required|numeric',
-            'discount'=>'required|numeric',
-            'photo'=>'nullable',
             'cat_id'=>'required|exists:categories,id',
             'child_cat_id'=>'nullable|exists:categories,id',
-            'size'=>'nullable|in:S,M,L,XL',
+            // 'size'=>'nullable|in:S,M,L,XL',
             'conditions'=>'nullable',
             'status'=>'nullable|in:active,inactive'
         ]);
@@ -172,16 +169,13 @@ class ProductController extends Controller
         if($product){
             $this->validate($request, [
                 'title'=>'string|required',
-                'type'=>'string|nullable',
-                'description'=>'string|nullable',
+                // 'description'=>'string|nullable',
                 'buying_price'=>'required|numeric',
                 'stock'=>'required|numeric',
                 'price'=>'required|numeric',
-                'discount'=>'required|numeric',
-                'photo'=>'nullable',
                 'cat_id'=>'required|exists:categories,id',
                 'child_cat_id'=>'nullable|exists:categories,id',
-                'size'=>'nullable|in:S,M,L,XL',
+                // 'size'=>'nullable|in:S,M,L,XL',
                 'conditions'=>'nullable',
                 'status'=>'nullable|in:active,inactive'
             ]);

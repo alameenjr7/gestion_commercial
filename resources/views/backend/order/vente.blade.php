@@ -298,11 +298,6 @@
 
 
 
-
-
-
-
-
     {{-- <script>
         $('#cat_id').change(function(){
             var cat_id=$(this).val();
