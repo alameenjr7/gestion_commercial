@@ -77,9 +77,9 @@
                                             <th hidden>{{$loop->iteration}}</th>
                                             <td>{{$item->reference}}</td>
                                             <td>{{$item->title}}</td>
-                                            <td style="text-align: center">
+                                            {{-- <td style="text-align: center">
                                                 <img src="{{$photo[0] ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="client img" style="height: 60px; width: 60px;">
-                                            </td> --}}
+                                            </td>  --}}
                                             <td>{{Helper::currency_converter($item->price)}}</td>
                                             <td>{{Helper::currency_converter($item->buying_price)}}</td>
                                             <td style="text-align: center">{{\App\Models\Category::where('id',$item->cat_id)->value('reference')}}</td>
