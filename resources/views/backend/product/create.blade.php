@@ -42,7 +42,7 @@
                                 <div class="mt-3 row col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Designation <span class="text-danger">*</span></label>
+                                            <label for="">Désignation <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" placeholder="Title" name="title"
                                                 value="{{old('title')}}" required>
                                         </div> 
@@ -132,7 +132,7 @@
                                     <div class="col-md-6">
                                         <label for="">Categories </label>
                                         <select id="cat_id" name="cat_id" class="form-control show-tick">
-                                            <option value="">-- Choisir une Categorie --</option>
+                                            <option value="">-- Choisir une Catégorie --</option>
                                             @foreach (\App\Models\Category::where('is_parent',1)->get() as $cat)
                                                 <option value="{{$cat->id}}">{{ucfirst($cat->title)}}</option>
                                             @endforeach
@@ -140,7 +140,7 @@
                                     </div>
 
                                     <div class="col-md-6 d-none" id="child_cat_div">
-                                        <label for="">Sous-Categories </label>
+                                        <label for="">Sous-Catégories </label>
                                         <select id="child_cat_id" name="child_cat_id" class="form-control show-tick">
 
                                         </select>

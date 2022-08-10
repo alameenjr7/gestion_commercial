@@ -43,14 +43,14 @@
                                 <div class="row col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Designation <span class="text-danger">*</span></label>
+                                            <label for="">Désignation <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" placeholder="Title" name="title"
                                                 value="{{$product->title}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Reference <span class="text-danger">*</span></label>
+                                            <label for="">Référence <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" placeholder="Ex: PTH03C7" name="reference"
                                                 value="{{$product->reference}}">
                                         </div>
@@ -131,9 +131,9 @@
 
                                 <div class="row col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-md-6">
-                                        <label for="">Categorie </label>
+                                        <label for="">Catégorie </label>
                                         <select id="cat_id" name="cat_id" class="form-control show-tick">
-                                            <option value="">-- Categories --</option>
+                                            <option value="">-- Catégories --</option>
                                             @foreach (\App\Models\Category::where('is_parent',1)->get() as $cat)
                                                 <option value="{{$cat->id}}" {{$cat->id==$product->cat_id ? 'selected' : ''}}>{{ucfirst($cat->title)}}</option>
                                             @endforeach
@@ -141,7 +141,7 @@
                                     </div>
 
                                     <div class="col-md-6 d-none" id="child_cat_div">
-                                        <label for="">Sous-Categorie </label>
+                                        <label for="">Sous-Catégorie </label>
                                         <select id="child_cat_id" name="child_cat_id" class="form-control show-tick">
 
                                         </select>
