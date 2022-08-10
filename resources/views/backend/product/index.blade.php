@@ -201,11 +201,11 @@
                                                                     <p>{{\App\Models\Brand::where('id',$product->brand_id)->value('title')}}</p>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <strong>Categorie:</strong>
+                                                                    <strong>Catégorie:</strong>
                                                                     <p>{{\App\Models\Category::where('id',$product->cat_id)->value('title')}}</p>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <strong>Sous-Categorie:</strong>
+                                                                    <strong>Sous-Catégorie:</strong>
                                                                     <p>{{\App\Models\Category::where('id',$product->child_cat_id)->value('title')}}</p>
                                                                 </div>
                                                             </div>
