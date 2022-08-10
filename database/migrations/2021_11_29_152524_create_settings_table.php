@@ -22,7 +22,7 @@ class CreateSettingsTable extends Migration
             $table->string('favicon')->nullable();
             $table->string('email');
             $table->string('phone');
-            $table->string('fax');
+            $table->string('fax')->nullable();
             $table->string('address');
             $table->string('footer')->nullable();
             $table->string('facebook_url')->nullable();
